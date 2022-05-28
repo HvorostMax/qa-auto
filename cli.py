@@ -7,7 +7,7 @@ api_Url = 'https://api.openweathermap.org/data/2.5/weather'
 units = 'metric'
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--city", default="Minsk")
+parser.add_argument("-city", default="Minsk")
 parser.add_argument("--lat", type=int, default=1)
 parser.add_argument("--lon", type=int, default=1)
 parser.add_argument("--units", type=str, default='metric')
@@ -20,7 +20,7 @@ def current_weather(location, units, api_key=api_Key):
     params = {'q': location, 'appid': api_key, 'units': units}
     response = requests.get(api_Url, params=params)
     response = response.json()
-    print(response)
+    # print(response)
     return response
 
 response = current_weather(location=namespace.city, units=namespace.units)
